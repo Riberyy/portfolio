@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title> Raivat Chauhan – Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:       #f5f0e8;
+      --text:     #1a1a1a;
+      --accent:   #c0392b;
+      --card:     #fffdf8;
+      --muted:    #7a7060;
+      --border:   #ddd5c0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── HEADER / NAV ── */
+    header {
+      background: var(--text);
+      color: #fff;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 60px;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+      color: var(--text);
+    }
+
+    .underline {
+      width: 48px;
+      height: 3px;
+      background: var(--accent);
+      margin-bottom: 1.8rem;
+    }
+
+    /* ── ABOUT ── */
+    #about p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 640px;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .skill-tag {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.5rem;
+      flex: 1 1 250px;
+    }
+
+    .project-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #e8e0d0;
+      border-radius: 3px;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      margin-right: 0.3rem;
+    }
+
+   
+    #contact { background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    form { max-width: 500px; }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.65rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--bg);
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    textarea { resize: vertical; height: 110px; }
+
+    .error {
+      color: var(--accent);
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
+      display: none;
+    }
+
+    button[type="submit"] {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 0.7rem 2rem;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    button[type="submit"]:hover { opacity: 0.85; }
+
+    #success-msg {
+      display: none;
+      background: #e8f5e9;
+      border: 1px solid #a5d6a7;
+      color: #2e7d32;
+      padding: 0.8rem 1.2rem;
+      border-radius: 4px;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+
+    /* ── FEEDBACK LIST ── */
+    #feedback-list {
+      margin-top: 2rem;
+    }
+
+    #feedback-list h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .feedback-item {
+      background: var(--bg);
+      border: 5px solid var(--border);
+      border-radius: 4px;
+      padding: 0.8rem 1rem;
+      margin-bottom: 0.7rem;
+      font-size: 0.9rem;
+    }
+
+    .feedback-item strong { color: var(--accent); }
+
+    
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <h1>Raivat Chauhan</h1>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Feedback</a>
+  </nav>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2>About Me</h2>
+  <div class="underline"></div>
+  <p>Hi! I'm Raivat Chauhan, a second-year Computer Science student passionate about building clean, functional web applications. I enjoy solving problems through code and am constantly learning new technologies to grow as a developer.</p>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="underline"></div>
+  <div class="skills-grid">
+    <span class="skill-tag">HTML5</span>
+    <span class="skill-tag">CSS3</span>
+    <span class="skill-tag">JavaScript</span>
+    <span class="skill-tag">Python</span>
+    <span class="skill-tag">Git & GitHub</span>
+    <span class="skill-tag">React </span>
+    <span class="skill-tag">SQL</span>
+    
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="underline"></div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <h3>Student Analysis</h3>
+      <p>This module fetches student data from an API file and displays their information and results. It organizes the data in a clear format to help analyze student performance easily.</p>
+      <span class="tag">HTML</span>
+      <span class="tag">CSS</span>
+      <span class="tag">Python</span>
+    </div>
+
+    <div class="project-card">
+      <h3>Quote Generator</h3>
+      <p>This module fetches quotes from an API and displays motivational quotes to the user. It dynamically retrieves data and shows a new inspiring quote each time it is generated.</p>
+      <span class="tag">HTML</span>
+      <span class="tag">CSS</span>
+      <span class="tag">Python</span>
+    </div>
+
+  </div>
+</section>
+
+<!--feedback-->
+<section id="contact">
+  <h2> Feedback</h2>
+  <div class="underline"></div>
+
+  <form id="contact-form" novalidate>
+    <div class="form-group">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" placeholder="Enter name"/>
+      <div class="error" id="name-error">Please enter your name.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="zzz@example.com"/>
+      <div class="error" id="email-error">Please enter a valid email address.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" placeholder="Write your feedback here…"></textarea>
+      <div class="error" id="message-error">Please write a message.</div>
+    </div>
+
+    <button type="submit">Send Feedback</button>
+  </form>
+
+  <div id="success-msg">✓ Thanks! Your feedback has been saved.</div>
+
+  <!-- Stored Feedback Display -->
+  <div id="feedback-list"></div>
+</section>
+
+
+
+<script>
+  // ── Render stored feedback ──
+  function renderFeedback() {
+    const list = document.getElementById('feedback-list');
+    const stored = JSON.parse(localStorage.getItem('feedbacks') || '[]');
+    if (stored.length === 0) { list.innerHTML = ''; return; }
+    let html = '<h3>Previous Feedback</h3>';
+    stored.forEach(f => {
+      html += `<div class="feedback-item"><strong>${f.name}</strong> (${f.email})<br>${f.message}</div>`;
+    });
+    list.innerHTML = html;
+  }
+
+  renderFeedback();
+
+  // ── Form   submission ──
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name    = document.getElementById('name');
+    const email   = document.getElementById('email');
+    const message = document.getElementById('message');
+    let valid = true;
+
+    // Reset errors
+    document.querySelectorAll('.error').forEach(el => el.style.display = 'none');
+    document.getElementById('success-msg').style.display = 'none';
+
+    // Name check
+    if (name.value.trim() === '') {
+      document.getElementById('name-error').style.display = 'block';
+      valid = false;
+    }
+
+    // Email check
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email.value.trim())) {
+      document.getElementById('email-error').style.display = 'block';
+      valid = false;
+    }
+
+    // Message check
+    if (message.value.trim() === '') {
+      document.getElementById('message-error').style.display = 'block';
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    // Save to localStorage
+    const feedbacks = JSON.parse(localStorage.getItem('feedbacks') || '[]');
+    feedbacks.push({
+      name: name.value.trim(),
+      email: email.value.trim(),
+      message: message.value.trim()
+    });
+    localStorage.setItem('feedbacks', JSON.stringify(feedbacks));
+
+    // Show success, reset form
+    document.getElementById('success-msg').style.display = 'block';
+    this.reset();
+    renderFeedback();
+  });
+</script>
+
+</body>
+</html>
